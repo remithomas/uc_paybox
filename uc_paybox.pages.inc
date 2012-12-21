@@ -100,10 +100,9 @@ function uc_paybox_annule() {
  * auto notification from paybox
  */
 function uc_paybox_auto() {
-//ini_set("display_errors", true);
-putenv("QUERY_STRING=''"); 
+  putenv("QUERY_STRING=''"); 
   putenv("CONTENT_LENGTH=''"); 
-//watchdog('uc_paybox', 'Order date @id is processing:', array('@id' => microtime()), WATCHDOG_INFO);
+
   $orderid = $_GET['orderid'];
   $montant = $_GET['montant'];
   $uniqueid = $_GET['uniqueid'];
@@ -113,7 +112,7 @@ putenv("QUERY_STRING=''");
 
   // check ip
   if (!_uc_paybox_ip_check($ip_paybox)) {
-    //$errors[] = t('Invalid IP @ip.', array('@ip' => $ip_paybox));
+    $errors[] = t('Invalid IP @ip.', array('@ip' => $ip_paybox));
   }
   
   // check sign
